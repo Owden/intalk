@@ -18,4 +18,12 @@ use Ramsey\Uuid\Type\Integer;
 class Customers extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+    public $fillable = [
+        'name',
+        'address',
+        'email_address',
+        'phone_number'
+    ];
 }

@@ -1,19 +1,16 @@
 @extends('app')
 
-@section('title', "Számlalista")
+@section('title', "Számla #{{ $invoice->id }}")
 
 @section('sidebar')
     @parent
 @endsection
 
 @section('content')
-    <h1>Számlák</h1>
-    <a href="{{url("szamlak/hozzaadas")}}">Új számla</a>
-    @foreach($invoices as $invoice)
+    <h1>Számla #{{ $invoice->id }}</h1>
+    <form method="POST" action="">
+        @csrf
         <table border="1">
-            <tr>
-                <td colspan="4"><a href="{{url("szamlak/$invoice->id")}}">#{{ $invoice->id }}</a></td>
-            </tr>
             <tr>
                 <td>Név:</td><td colspan="3"> {{ $invoice->customer->name }} </td>
             </tr>
@@ -35,9 +32,22 @@
                 @endphp
             @endforeach
             <tr>
+                <td colspan="2">
+                    <select name="item_id">
+                        @foreach($goods_and_services as $good_or_service)
+                            <option value="{{ $good_or_service->id }}">{{ $good_or_service->name }} ({{ $good_or_service->price }} HUF)</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td><input name="amount" type="number"></td>
+                <td><input type="submit" @if(empty($goods_and_services->toArray())) disabled @endif value="Tétel hozzáadása"></td>
+            </tr>
+            <tr>
                 <td colspan="3">Végösszeg:</td><td>{{ $totalAmount }}</td>
             </tr>
         </table>
-        <br>
-    @endforeach
+    </form>
+    <br>
+    <a href="{{url("szamlak/$invoice->id")}}">Kilépés</a>
+    <br>
 @endsection

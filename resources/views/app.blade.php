@@ -26,6 +26,7 @@
     <a href="{{url("szolgaltatasok/")}}">Szolgáltatások listája</a>
     <a href="{{url("beszallitok/")}}">Beszállítók listája</a>
     <a href="{{url("szamlak/")}}">Számlalista</a>
+    <a href="{{url("bevetelezesek/")}}">Bevételezések</a>
 
 @show
 

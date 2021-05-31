@@ -20,11 +20,20 @@ class Deliveries extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    public $fillable = [
+        'supplier_id',
+        'delivered_good',
+        'amount',
+        'time_of_delivery',
+        'price'
+    ];
+
     public function supplier() {
-        return $this->hasOne(Suppliers::class,"supplier_id");
-    }
-    public function delivered_good() {
-        return $this->hasOne(GoodsAndServices::class,"delivered_good");
+        return $this->hasOne(Suppliers::class,"id", "supplier_id");
     }
 
+    public function delivered_good_details() {
+        return $this->hasOne(GoodsAndServices::class,"id", "delivered_good");
+    }
 }

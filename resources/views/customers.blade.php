@@ -8,10 +8,11 @@
 
 @section('content')
     <h1>Vevők</h1>
+    <a href="{{url("vevok/hozzaadas")}}">Hozzáadás</a>
     @foreach($customers as $customer)
         <table border="1">
             <tr>
-                <td colspan="2"> #{{ $customer->id }} {{ $customer->name }} </td>
+                <td colspan="2"><a href="{{url("vevok/$customer->id")}}">#{{ $customer->id }}</a> {{ $customer->name }} </td>
             </tr>
             <tr>
                 <td>Cím:</td><td>{{ $customer->address }}</td>

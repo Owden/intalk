@@ -34,8 +34,10 @@ class CreateInvoiceItemsTable extends Migration
             BEGIN
                 DECLARE old_amount INTEGER;
 
-                SET @old_amount := (SELECT amount FROM goods_and_services WHERE id=NEW.item_id);
-                UPDATE goods_and_services SET amount=@old_amount-NEW.amount WHERE id=NEW.item_id;
+                IF ((SELECT type FROM goods_and_services WHERE id=NEW.item_id) = "G") THEN
+                    SET @old_amount := (SELECT amount FROM goods_and_services WHERE id=NEW.item_id);
+                    UPDATE goods_and_services SET amount=@old_amount-NEW.amount WHERE id=NEW.item_id;
+                END IF;
             END;'
             )
         );

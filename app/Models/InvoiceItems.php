@@ -17,6 +17,8 @@ class InvoiceItems extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function item() {
         return $this->hasOne(GoodsAndServices::class,"id", "item_id");
     }
