@@ -18,10 +18,10 @@ class InvoiceItems extends Model
     use HasFactory;
 
     public function item() {
-        return $this->hasOne(GoodsAndServices::class,"item_id");
+        return $this->hasOne(GoodsAndServices::class,"id", "item_id");
     }
 
     public function invoice() {
-        return $this->hasOne(Invoices::class,"invoice_id");
+        return $this->hasOne(Invoices::class,"invoice_id", "id");
     }
 }

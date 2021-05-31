@@ -19,4 +19,9 @@ class GoodsAndServices extends Model
     use HasFactory;
 
     public $timestamps = false;
+    public $fillable = [
+        'name',
+        'price',
+        'amount'
+    ];
 }

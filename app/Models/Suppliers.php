@@ -18,4 +18,13 @@ use Illuminate\Database\Eloquent\Model;
 class Suppliers extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+    public $fillable = [
+        'company_name',
+        'contact',
+        'address',
+        'email_address',
+        'phone_number'
+    ];
 }

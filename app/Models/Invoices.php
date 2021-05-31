@@ -17,7 +17,7 @@ class Invoices extends Model
     use HasFactory;
 
     public function customer() {
-        return $this->hasOne(Customers::class,"customer_id");
+        return $this->hasOne(Customers::class,"id","customer_id");
     }
 
     public function invoice_item() {
